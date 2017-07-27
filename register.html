@@ -1,0 +1,83 @@
+<html>
+<head>
+</head>
+<body>
+
+  <h1>Title</h1>
+
+  <p> </p>
+
+  <input  id="registerEmail" placeholder="Email">
+  <input id="registerPassword" placeholder="Password">
+  <button id="register">Register</button>
+  <br/>
+  <input id="loginEmail" placeholder="Email">
+  <input id="loginPassword" placeholder="Password">
+  <button id="login">Login</button>
+  <br/>
+  <button id="testB">test</button>
+  <br>
+  <button id="signOutButton">Sign Out</button>
+
+  <!--Initialize Firebase-->
+  <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyA_4iXDDocy6BpKrB8C_ogt260vtzXdwQg",
+      authDomain: "login-and-logout.firebaseapp.com",
+      databaseURL: "https://login-and-logout.firebaseio.com",
+      projectId: "login-and-logout",
+      storageBucket: "login-and-logout.appspot.com",
+      messagingSenderId: "252475483210"
+    };
+    firebase.initializeApp(config);
+  </script>
+
+  <!--Switch to JavaScript-->
+  <script>
+    //Make Variables
+    var registerButton = document.getElementById("register");
+    var rEmail = document.getElementById("registerEmail");
+    var rPassword = document.getElementById("registerPassword");
+    //Links to main.html
+    var testB = document.getElementById("testB");
+
+    //Signs out
+    var signOut = document.getElementById("signOutButton");
+
+    registerButton.onclick = function(){
+      firebase.auth().createUserWithEmailAndPassword(rEmail.value, rPassword.value).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert(errorMessage);
+        //var f = document.querySelector('p');
+        //f.innerHTML = "User Cannot Be Created";
+        // ...
+      });
+    }
+    
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        var s = document.querySelector('h1');
+        s.innerHTML = "Logged In " + user.email;
+        console.log(user);
+        window.location.replace("main.html");
+      }
+    });
+
+    signOut.onclick = function() {
+      firebase.auth().signOut().then(function() {
+        var s = document.querySelector('h1');
+        s.innerHTML = "Sign Out Successful";
+        location.reload(); //refresh
+      }).catch(function(error) {
+        var s = document.querySelector('h1');
+        s.innerHTML = "Sign Out Not Successful";
+      });
+    }
+
+  </script>
+</body>
+</html>
