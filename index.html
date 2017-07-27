@@ -12,6 +12,8 @@
   <input id="loginEmail" placeholder="Email">
   <input id="loginPassword" placeholder="Password">
   <button id="login">Login</button>
+  <br/>
+  <button id="testB">test</button>
 
   <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
   <script>
@@ -36,6 +38,8 @@
     var lEmail = document.getElementById("loginEmail");
     var lPassword = document.getElementById("loginPassword");
 
+    var testB = document.getElementById("testB");
+
     registerButton.onclick = function(){
       firebase.auth().createUserWithEmailAndPassword(rEmail.value, rPassword.value).catch(function(error) {
         // Handle Errors here.
@@ -56,11 +60,16 @@
       });
     }
 
+    testB.onclick = function() {
+      window.location.replace("main.html");
+    }
+    
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         var s = document.querySelector('h1');
         s.innerHTML = "Logged In " + user.email;
         console.log(user);
+        window.location.replace("main.html");
       }
     });
   </script>
