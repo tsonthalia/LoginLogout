@@ -2,11 +2,14 @@
 <head>
 </head>
 <body>
-  <input  id="registerEmail" placeholder="Email...">
+
+  <h1>Title</h1>
+
+  <input  id="registerEmail" placeholder="Email">
   <input id="registerPassword" placeholder="Password">
   <button id="register">Register</button>
   <br>
-  <input id="loginEmail" placeholder="Email...">
+  <input id="loginEmail" placeholder="Email">
   <input id="loginPassword" placeholder="Password">
   <button id="login">Login</button>
 
@@ -22,6 +25,41 @@
       messagingSenderId: "252475483210"
     };
     firebase.initializeApp(config);
+  </script>
+
+  <script>
+    var registerButton = document.getElementById("register");
+    var rEmail = document.getElementById("registerEmail");
+    var rPassword = document.getElementById("registerPassword");
+
+    var loginButton = document.getElementById("login");
+    var lEmail = document.getElementById("loginEmail");
+    var lPassword = document.getElementById("loginPassword");
+
+    registerButton.onclick = function(){
+      firebase.auth().createUserWithEmailAndPassword(rEmail.value, rPassword.value).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+    }
+
+    loginButton.onclick = function {
+      firebase.auth().signInWithEmailAndPassword(lEmail.value, lPassword.value).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+    }
+
+    firebase.auth(). onAUthStateChange(function(user)) {
+      if (user) {
+        var s = document.querySelector('h1');
+        s.innerHTML = "Logged In " + user.email;
+      }
+    }
   </script>
 </body>
 </html>
