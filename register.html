@@ -1,24 +1,17 @@
 <html>
 <head>
+  <link rel="stylesheet" href="registerStyles.css">
 </head>
 <body>
+  <center>
+    <h1>Register</h1>
 
-  <h1>Title</h1>
+    <p> </p>
 
-  <p> </p>
-
-  <input  id="registerEmail" placeholder="Email">
-  <input id="registerPassword" placeholder="Password">
-  <button id="register">Register</button>
-  <br/>
-  <input id="loginEmail" placeholder="Email">
-  <input id="loginPassword" placeholder="Password">
-  <button id="login">Login</button>
-  <br/>
-  <button id="testB">test</button>
-  <br>
-  <button id="signOutButton">Sign Out</button>
-
+    <input  id="registerEmail" placeholder="Email">
+    <input id="registerPassword" placeholder="Password">
+    <button id="register">Register</button>
+  </center>
   <!--Initialize Firebase-->
   <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
   <script>
@@ -57,7 +50,7 @@
         // ...
       });
     }
-    
+
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         var s = document.querySelector('h1');
