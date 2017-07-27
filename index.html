@@ -16,6 +16,8 @@
   <button id="login">Login</button>
   <br/>
   <button id="testB">test</button>
+  <br>
+  <button id="signOutButton">Sign Out</button>
 
   <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
   <script>
@@ -41,6 +43,8 @@
     var lPassword = document.getElementById("loginPassword");
 
     var testB = document.getElementById("testB");
+
+    var signOut = document.getElementById("signOutButton");
 
     registerButton.onclick = function(){
       firebase.auth().createUserWithEmailAndPassword(rEmail.value, rPassword.value).catch(function(error) {
@@ -75,9 +79,20 @@
         var s = document.querySelector('h1');
         s.innerHTML = "Logged In " + user.email;
         console.log(user);
-        window.location.replace("main.html");
+        //window.location.replace("main.html");
       }
     });
+
+    signOut.onclick = function() {
+      firebase.auth().signOut().then(function() {
+        var s = document.querySelector('h1');
+        s.innerHTML = "Sign Out Successful";
+      }).catch(function(error) {
+        var s = document.querySelector('h1');
+        s.innerHTML = "Sign Out Not Successful";
+      });
+    }
+
   </script>
 </body>
 </html>
