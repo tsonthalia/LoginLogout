@@ -5,6 +5,8 @@
 
   <h1>Title</h1>
 
+  <p> </p>
+
   <input  id="registerEmail" placeholder="Email">
   <input id="registerPassword" placeholder="Password">
   <button id="register">Register</button>
@@ -46,6 +48,8 @@
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage);
+        var f = document.querySelector('p');
+        f.innerHTML = "User Cannot Be Created";
         // ...
       });
     }
@@ -56,6 +60,8 @@
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorMessage);
+        var e = document.querySelector('p');
+        e.innerHTML = "User Not In System";
         // ...
       });
     }
@@ -63,7 +69,7 @@
     testB.onclick = function() {
       window.location.replace("main.html");
     }
-    
+
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         var s = document.querySelector('h1');
