@@ -9,6 +9,20 @@
     <br>
     <button id="backButton">Back</button>
 
+    <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyA_4iXDDocy6BpKrB8C_ogt260vtzXdwQg",
+        authDomain: "login-and-logout.firebaseapp.com",
+        databaseURL: "https://login-and-logout.firebaseio.com",
+        projectId: "login-and-logout",
+        storageBucket: "login-and-logout.appspot.com",
+        messagingSenderId: "252475483210"
+      };
+      firebase.initializeApp(config);
+    </script>
+
     <script type="text/javascript">
       var backButton = document.getElementById("backButton");
 
@@ -23,5 +37,7 @@
         //});
       }
     </script>
+
+
   </body>
 </html>
