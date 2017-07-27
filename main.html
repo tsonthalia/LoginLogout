@@ -8,7 +8,7 @@
   <body>
     <center>
       <h1>Hello</h1>
-      <button id="backButton">Back</button>
+      <button id="backButton">Sign Out</button>
     </center>
 
     <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
@@ -32,7 +32,7 @@
         firebase.auth().signOut().then(function() {
           var s = document.querySelector('h1');
           s.innerHTML = "Sign Out Successful";
-          location.reload();
+          window.location.replace("index.html");
         });
         //.catch(function(error) {
           //var s = document.querySelector('h1');
