@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Main Page</title>
+    <link rel="stylesheet" href="mainStyles.css">
   </head>
   <body>
-    <h1>Hello</h1>
-    <br>
-    <button id="backButton">Back</button>
+    <center>
+      <h1>Hello</h1>
+      <button id="backButton">Back</button>
+    </center>
 
     <script src="https://www.gstatic.com/firebasejs/4.1.5/firebase.js"></script>
     <script>
@@ -30,6 +32,7 @@
         firebase.auth().signOut().then(function() {
           var s = document.querySelector('h1');
           s.innerHTML = "Sign Out Successful";
+          location.reload();
         });
         //.catch(function(error) {
           //var s = document.querySelector('h1');
