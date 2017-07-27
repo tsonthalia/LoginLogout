@@ -14,9 +14,11 @@
 
       backButton.onclick = function () {
         firebase.auth().signOut().then(function() {
-        // Sign-out successful.
+          var s = document.querySelector('h1');
+          s.innerHTML = "Sign Out Successful";
         }).catch(function(error) {
-        // An error happened.
+          var s = document.querySelector('h1');
+          s.innerHTML = "Sign Out Not Successful";
         });
       }
     </script>
