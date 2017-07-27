@@ -16,10 +16,11 @@
         firebase.auth().signOut().then(function() {
           var s = document.querySelector('h1');
           s.innerHTML = "Sign Out Successful";
-        }).catch(function(error) {
-          var s = document.querySelector('h1');
-          s.innerHTML = "Sign Out Not Successful";
         });
+        //.catch(function(error) {
+          //var s = document.querySelector('h1');
+          //s.innerHTML = "Sign Out Not Successful";
+        //});
       }
     </script>
   </body>
