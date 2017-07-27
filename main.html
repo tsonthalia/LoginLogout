@@ -5,9 +5,20 @@
     <title>Main Page</title>
   </head>
   <body>
-
     <h1>Hello</h1>
     <br>
-    <a href="index.html">Back</a>
+    <a id="backButton" href="index.html">Back</a>
+
+    <script type="text/javascript">
+      var backButton = document.getElementById("backButton");
+
+      backButton.onclick = function () {
+        firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        }).catch(function(error) {
+        // An error happened.
+        });
+      }
+    </script>
   </body>
 </html>
